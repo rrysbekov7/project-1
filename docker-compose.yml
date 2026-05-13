@@ -1,0 +1,11 @@
+version: "3.8"
+
+services:
+  my-nginx:
+    image: project-1:latest
+    ports:
+      - "8080:80"
+  my-local:
+    image: traefik/whoami
+    ports:
+      - "8081:80"
