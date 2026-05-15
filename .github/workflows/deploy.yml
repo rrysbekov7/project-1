@@ -20,4 +20,18 @@ jobs:
         with:
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/project-1:latest
-
+  deploy:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Deploy to server
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            docker pull blackhorse443/project-1:latest
+            docker compose up -d
