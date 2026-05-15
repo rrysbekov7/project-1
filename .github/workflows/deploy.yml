@@ -35,3 +35,4 @@ jobs:
           script: |
             docker pull blackhorse443/project-1:latest
             docker compose up -d
+            
