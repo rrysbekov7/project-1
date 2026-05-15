@@ -34,5 +34,5 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             docker pull blackhorse443/project-1:latest
-            docker compose up -d
-            
+            docker run -d -p 80:80 blackhorse443/project-1:latest
+
